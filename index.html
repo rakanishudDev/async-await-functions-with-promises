@@ -29,7 +29,7 @@
       
       async function myFetch() {
         try {
-          let response = await fetch(coffee.jpg);
+          let response = await fetch('coffee.jpg');
           if (!response.ok) {
             throw new Error('HTTP error: ' + response.status);
           }
