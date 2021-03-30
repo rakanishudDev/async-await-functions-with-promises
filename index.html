@@ -16,16 +16,20 @@
           throw new Error('HTTP erroe detected, Status:' + response.status);
         }
         let myBlob = await response.blob();
+      }
+      myFetch().then(function(myBlob) {
         let objectURL = URL.createObjectURL(myBlob);
         let image = document.createElement('img');
         image.src = objectURL;
         document.body.appendChild(image);
-
-      }
-
-      myFetch().catch(function(e) {
+      }).catch(function(e) {
         console.log('error: ' + e.message);
       });
+        
+
+      
+
+      
 
 
 
