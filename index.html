@@ -8,23 +8,21 @@
   <body>
     <p>This is my page</p>
     <script>
-      fetch('coffee.jpg').then(function(response) {
+      
+   
+      async function myFetch() {
+        let response = await fetch('coffee.jpg');
         if (!response.ok) {
-          throw new Error('HTTP problem detected, Status: ' + response.status);
-        } else {
-          return response.blob();
+          throw new Error('HTTP erroe detected, Status:' + response.status);
         }
-      }).then(function(myBlob) {
+        let myBlob = await response.blob();
         let objectURL = URL.createObjectURL(myBlob);
         let image = document.createElement('img');
         image.src = objectURL;
         document.body.appendChild(image);
-      }).catch(function(e) {
-        console.log('Error while fetching files: ' + e.message);
-      }).finally(function() {
-        console.log('succsess yea!');
-      });
-   
+
+      }
+
 
 
     </script>
