@@ -6,12 +6,14 @@
     <title>Custom promise example</title>
   </head>
   <body>
+    <p>This is my page</p>
     <script>
       fetch('coffee.jpg').then(function(response) {
         if (!response.ok) {
           throw new Error('HTTP problem detected, Status: ' + response.status);
+        } else {
+          return response.blob();
         }
-        return response.blob();
       }).then(function(myBlob) {
         let objectURL = URL.createObjectURL(myBlob);
         let image = document.createElement('img');
@@ -19,6 +21,8 @@
         document.body.appendChild(image);
       }).catch(function(e) {
         console.log('Error while fetching files: ' + e.message);
+      }).finally(function() {
+        console.log('succsess yea!');
       });
    
 
